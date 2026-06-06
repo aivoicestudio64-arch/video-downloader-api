@@ -10,6 +10,9 @@ class FormatInfo(BaseModel):
     filesize: Optional[int] = None
     vcodec: Optional[str] = None
     acodec: Optional[str] = None
+    # Present when the video stream has no embedded audio.
+    # The client should fetch and merge both URLs using ffmpeg.
+    audio_url: Optional[str] = None
 
 
 class AnalyzeResponse(BaseModel):
