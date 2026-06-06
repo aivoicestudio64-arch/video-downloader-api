@@ -53,12 +53,13 @@ def _parse_formats(raw_formats: List[Dict]) -> List[FormatInfo]:
     seen_qualities = set()
 
     video_formats = [
-        f
-        for f in raw_formats
-        if f.get("url")
-        and f.get("vcodec") not in (None, "none")
-        and f.get("height")
-    ]
+    f
+    for f in raw_formats
+    if f.get("url")
+    and f.get("vcodec") not in (None, "none")
+    and f.get("acodec") not in (None, "none")
+    and f.get("height")
+]
 
     video_formats.sort(key=lambda f: f.get("height", 0), reverse=True)
 
